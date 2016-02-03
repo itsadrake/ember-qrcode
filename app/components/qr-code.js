@@ -39,9 +39,9 @@ export default Ember.Component.extend(
 
 		var size = qr.getModuleCount();
 
-		var cwidth = Math.round(width / size);
-		var cheight = Math.round(height / size);
-		var padding = 0;
+		var cwidth = Math.floor(width / size);
+		var cheight = Math.floor(height / size);
+		var pad = 0;
 		
 		function cx(x) {return x * cwidth;};
 		function cy(y) {return y * cheight;};
@@ -50,6 +50,6 @@ export default Ember.Component.extend(
 		for (var row = 0; row < size; ++row)
 			for (var col = 0; col < size; ++col)
 				if (qr.isDark(row, col))
-					ctx.fillRect(cx(row) + padding, cy(col) + padding, cwidth - padding, cheight - padding);
+					ctx.fillRect(cx(row) + pad, cy(col) + pad, cwidth - pad, cheight - pad);
 	}
 });
