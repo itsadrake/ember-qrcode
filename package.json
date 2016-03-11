@@ -1,6 +1,6 @@
 {
   "name": "ember-qrcode",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Ember addon that draws QR codes.",
   "directories": {
     "doc": "doc",
