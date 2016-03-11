@@ -3,7 +3,7 @@
 
 module.exports =
 {
-	name: 'ember-qrcode'
+	name: 'ember-qrcode',
 	included: function(app)
 	{
 		this._super.included(app);
