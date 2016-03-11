@@ -11,7 +11,7 @@ var app = new EmberAddon
 	}
 });
 
-app.import(app.bowerDirectory + '/qrcode.js/lib/qrcode.js');
+app.import(app.bowerDirectory + '/qrcode/lib/qrcode.js');
 
 module.exports = app.toTree();
 
