@@ -12,6 +12,11 @@ export default Ember.Component.extend(
 	ctx: null,
 	data: '',
 
+	drawObserver: Ember.observer('data', 'light', 'dark', function()
+	{
+  	this.draw();
+	}),
+
 	didInsertElement: function()
 	{
 		this.set('ctx', this.get('element').getContext('2d'));
@@ -32,7 +37,7 @@ export default Ember.Component.extend(
 		var ctx = this.get('ctx');
 		var width = this.get('width');
 		var height = this.get('height');
-		
+
 		var qr = new QRCode(0, 1);
 		qr.addData(data);
 		qr.make();
@@ -41,8 +46,7 @@ export default Ember.Component.extend(
 
 		var cwidth = Math.floor(width / size);
 		var cheight = Math.floor(height / size);
-		var pad = 0;
-		
+
 		function cx(x) {return x * cwidth;};
 		function cy(y) {return y * cheight;};
 
@@ -50,6 +54,6 @@ export default Ember.Component.extend(
 		for (var row = 0; row < size; ++row)
 			for (var col = 0; col < size; ++col)
 				if (qr.isDark(row, col))
-					ctx.fillRect(cx(row) + pad, cy(col) + pad, cwidth - pad, cheight - pad);
+					ctx.fillRect(cx(row), cy(col), cwidth, cheight);
 	}
 });
