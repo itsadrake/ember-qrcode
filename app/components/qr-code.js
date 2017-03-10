@@ -11,6 +11,10 @@ export default Ember.Component.extend(
 	dark: '#000000',
 	ctx: null,
 	data: '',
+	
+	dataChanged: function() {
+		this.draw();
+	}.observes('data'),
 
 	drawObserver: Ember.observer('data', 'light', 'dark', function()
 	{
